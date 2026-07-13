@@ -1,0 +1,7 @@
+html - markup language
+tags
+<h1> - tag 
+
+html - structure/content 
+css - styling
+js - functionalities
