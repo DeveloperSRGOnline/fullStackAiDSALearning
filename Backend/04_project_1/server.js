@@ -1,4 +1,7 @@
+require('dotenv').config()
 const express = require("express");
+const connectToDB = require('./src/db/db.js')
+connectToDB()// will call it here
 
 const app = express();
 app.use(express.json()); // by default express not read req.body
