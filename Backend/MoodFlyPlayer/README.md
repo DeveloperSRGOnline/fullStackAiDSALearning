@@ -334,7 +334,7 @@ MoodFlyPlayer/
 - [x] **UI & Screen Analysis**: Extracted from Stitch high-fidelity project (`Wireframe to High-Fidelity UI Design`).
 - [x] **Database Schema Design**: 9 Mongoose models created and validated in `backend/src/models/`.
 - [x] **Project Blueprint**: Main `README.md` created at root for persistent reference.
-- [ ] **Database Connection**: Implement `db.js` using `mongoose.connect(process.env.MONGODB_URI)`.
+- [x] **Database Connection**: Implement `db.js` using `mongoose.connect(process.env.MONGODB_URI)`.
 - [ ] **Seed Data Script**: Create sample seed data for Arijit Singh, trending releases, genres, and playlists.
 - [ ] **Express API Setup**: Set up router structure, error handling middleware, and CORS.
 - [ ] **Mood Detection API**: Implement endpoint accepting emotion probabilities -> returning songs matching energy level and tags.
