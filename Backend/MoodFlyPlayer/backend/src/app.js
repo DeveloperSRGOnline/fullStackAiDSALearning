@@ -23,8 +23,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ==========================================
-// Base Routes
+// Base Routes & API v1 Routes
 // ==========================================
+
+const apiRoutes = require('./routes');
+app.use('/api/v1', apiRoutes);
 
 // Health Check Endpoint
 app.get('/health', (req, res) => {
