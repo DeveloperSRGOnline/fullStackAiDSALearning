@@ -322,8 +322,8 @@ MoodFlyPlayer/
 │       │   ├── favorite.model.js
 │       │   └── index.js                # Centralized models export
 │       ├── routes/                     # Express REST routers
-│       ├── services/                   # Mood matching logic & algorithms
-│       └── app.js                      # Express app entry point
+│       ├── app.js                      # Express app entry point
+│       └── server.js                   # Server boot & DB connection listener
 └── frontend/                           # Client-side Application (Vite / React / Tailwind)
 ```
 
