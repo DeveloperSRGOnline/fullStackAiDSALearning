@@ -1,0 +1,461 @@
+{
+  "info": {
+    "_postman_id": "moodfly-player-api-collection",
+    "name": "Moodfly Music Player API",
+    "description": "Complete collection of all endpoints for Moodfly Music Player Backend API with raw JSON payloads and parameters.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "sample_song_id",
+      "value": "6aaa12b4b5d71ab722537e46",
+      "type": "string"
+    },
+    {
+      "key": "sample_genre_id",
+      "value": "6aaa12b4b5d71ab722537e33",
+      "type": "string"
+    },
+    {
+      "key": "sample_artist_id",
+      "value": "6aaa12b4b5d71ab722537e38",
+      "type": "string"
+    },
+    {
+      "key": "sample_album_id",
+      "value": "6aaa12b4b5d71ab722537e3d",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "0. System & Health",
+      "item": [
+        {
+          "name": "Root Welcome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            }
+          }
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "1. Songs",
+      "item": [
+        {
+          "name": "Get All Songs (Filters & Search)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/songs?page=1&limit=10&sort=trending",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "songs"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" },
+                { "key": "sort", "value": "trending" },
+                { "key": "search", "value": "Tokyo", "disabled": true },
+                { "key": "mood", "value": "Calm", "disabled": true },
+                { "key": "energyLevel", "value": "4", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Featured Hero Songs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/songs/featured",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "songs", "featured"]
+            }
+          }
+        },
+        {
+          "name": "Get Song By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/songs/{{sample_song_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "songs", "{{sample_song_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Mood & Biometrics",
+      "item": [
+        {
+          "name": "Detect Mood (Mood String)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mood\": \"happy\",\n  \"confidence\": 0.95,\n  \"limit\": 6,\n  \"detectionSource\": \"postman_scan\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/moods/detect",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "moods", "detect"]
+            }
+          }
+        },
+        {
+          "name": "Detect Mood (Facial Expressions Matrix)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expressions\": {\n    \"happy\": 0.85,\n    \"surprised\": 0.10,\n    \"neutral\": 0.05\n  },\n  \"limit\": 6,\n  \"detectionSource\": \"webcam_matrix\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/moods/detect",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "moods", "detect"]
+            }
+          }
+        },
+        {
+          "name": "Get Mood Recommendations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/moods/recommendations?mood=calm&energyLevel=3&limit=8",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "moods", "recommendations"],
+              "query": [
+                { "key": "mood", "value": "calm" },
+                { "key": "energyLevel", "value": "3" },
+                { "key": "limit", "value": "8" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Mood History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/moods/history?limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "moods", "history"],
+              "query": [
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Tracks By Vibe Tag",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/moods/vibe/Euphoric?limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "moods", "vibe", "Euphoric"],
+              "query": [
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Playlists",
+      "item": [
+        {
+          "name": "Get All Playlists",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/playlists",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "playlists"]
+            }
+          }
+        },
+        {
+          "name": "Create Playlist",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cyber City Neon Drive\",\n  \"description\": \"Synthwave and chill lo-fi tunes for nocturnal journeys.\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80\",\n  \"isPublic\": true,\n  \"moodSyncDynamic\": true,\n  \"sidebarIcon\": \"nightlife\",\n  \"accentColor\": \"#8b5cf6\",\n  \"targetMood\": \"Lo-Fi\",\n  \"songs\": [\"{{sample_song_id}}\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/playlists",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "playlists"]
+            }
+          }
+        },
+        {
+          "name": "Get Playlist By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/playlists/{{sample_playlist_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "playlists", "{{sample_playlist_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Playlist",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cyber City Neon Drive [Updated]\",\n  \"accentColor\": \"#06b6d4\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/playlists/{{sample_playlist_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "playlists", "{{sample_playlist_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Add Song To Playlist",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"songId\": \"{{sample_song_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/playlists/{{sample_playlist_id}}/songs",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "playlists", "{{sample_playlist_id}}", "songs"]
+            }
+          }
+        },
+        {
+          "name": "Remove Song From Playlist",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/playlists/{{sample_playlist_id}}/songs/{{sample_song_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "playlists", "{{sample_playlist_id}}", "songs", "{{sample_song_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Playlist",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/playlists/{{sample_playlist_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "playlists", "{{sample_playlist_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Library (Favorites & Recents)",
+      "item": [
+        {
+          "name": "Toggle Favorite (Like / Unlike)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"songId\": \"{{sample_song_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/library/favorites/toggle",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "library", "favorites", "toggle"]
+            }
+          }
+        },
+        {
+          "name": "Get User Favorites",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/library/favorites",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "library", "favorites"]
+            }
+          }
+        },
+        {
+          "name": "Log Playback (Recents)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"songId\": \"{{sample_song_id}}\",\n  \"playedDuration\": 190,\n  \"completed\": true,\n  \"contextMood\": \"Energy\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/library/recents",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "library", "recents"]
+            }
+          }
+        },
+        {
+          "name": "Get Listening History (Recents)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/library/recents?limit=20",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "library", "recents"],
+              "query": [
+                { "key": "limit", "value": "20" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Catalog (Genres, Artists, Albums)",
+      "item": [
+        {
+          "name": "Get All Genres",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/genres",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "genres"]
+            }
+          }
+        },
+        {
+          "name": "Get Genre By ID or Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/genres/{{sample_genre_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "genres", "{{sample_genre_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Get All Artists",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/artists?limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "artists"],
+              "query": [
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Artist By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/artists/{{sample_artist_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "artists", "{{sample_artist_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Get All Albums",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/albums?limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "albums"],
+              "query": [
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Album By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/albums/{{sample_album_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "albums", "{{sample_album_id}}"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

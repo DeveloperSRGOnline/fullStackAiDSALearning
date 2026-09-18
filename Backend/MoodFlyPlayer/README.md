@@ -335,10 +335,13 @@ MoodFlyPlayer/
 - [x] **Database Schema Design**: 9 Mongoose models created and validated in `backend/src/models/`.
 - [x] **Project Blueprint**: Main `README.md` created at root for persistent reference.
 - [x] **Database Connection**: Implement `db.js` using `mongoose.connect(process.env.MONGODB_URI)`.
-- [ ] **Seed Data Script**: Create sample seed data for Arijit Singh, trending releases, genres, and playlists.
-- [ ] **Express API Setup**: Set up router structure, error handling middleware, and CORS.
-- [ ] **Mood Detection API**: Implement endpoint accepting emotion probabilities -> returning songs matching energy level and tags.
-- [ ] **Frontend Integration**: Hook up camera viewfinder (MediaPipe / Face-API) and persistent audio player to backend endpoints.
+- [x] **Seed Data Script**: Sample seed data for Arijit Singh, trending releases, genres, and playlists created in `backend/src/seed.js`.
+- [x] **Express API Setup**: Router structure, error handling middleware, and CORS configured in `backend/src/`.
+- [x] **Mood Detection API**: Endpoint accepting emotion probabilities and returning songs matching energy levels and tags in `backend/src/controllers/mood.controller.js`.
+- [x] **Frontend Initialization**: Modern Vite + React client in `frontend/` matching Obsidian Pulse aesthetic (`#0b0f17`, `#10b981`, `#06b6d4`).
+- [x] **Audio Streaming Store**: Full HTML5 Audio streaming infrastructure in `frontend/src/context/AudioContext.jsx`.
+- [x] **Core UI Features**: Persistent Bottom Player, Home / Dashboard with Live Audio Deck, Mood Detection Studio (`/detect-mood`), and Playlists View with "Create Playlist" modal.
 
 ---
 *Created for the Moodfly AI Music Experience.*
+
