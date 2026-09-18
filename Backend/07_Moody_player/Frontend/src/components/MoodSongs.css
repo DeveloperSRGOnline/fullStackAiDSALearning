@@ -1,0 +1,27 @@
+.mood-songs{
+    width: 100%;
+    padding: 4rem;
+}
+
+.mood-songs h2{
+    margin-bottom: 1.7rem;
+    background: linear-gradient(white, #57950f);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mood-songs .song h3{
+    font-size: 1.2rem;
+}
+.mood-songs .song p{
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.mood-songs .song{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}

@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 import FacialExpression from './components/FacialExpression'
-
+import MoodSongs from './components/MoodSongs'
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <FacialExpression />
-    </>
+    <div className="app-container">
+      <div className="mood-player-card">
+        <FacialExpression />
+        <MoodSongs />
+      </div>
+    </div>
   )
 }
 

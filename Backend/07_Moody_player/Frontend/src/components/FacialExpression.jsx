@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as faceapi from 'face-api.js';
+import "./FacialExpression.css"
 
 const FacialExpression = () => {
     const videoRef = useRef(null);
@@ -46,17 +47,19 @@ const FacialExpression = () => {
     }, []);
 
     return (
-        <div>
-            <video
-                ref={videoRef}
-                autoPlay
-                muted
-                playsInline
-                width="720"
-                height="560"
-                style={{ width: '720px', height: '560px' }}
-            />
-            <button onClick={detectMood}>Detect Mood</button>
+        <div className='mood-element'>
+            <div className='video-feed-box'>
+                <video
+                    ref={videoRef}
+                    autoPlay
+                    muted
+                    playsInline
+                    className='user-video-feed'
+                />
+            </div>
+            <button className='detect-mood-btn' onClick={detectMood}>
+                detect mood
+            </button>
         </div>
     );
 };
