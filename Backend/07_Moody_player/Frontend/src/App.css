@@ -4,28 +4,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.25rem;
   background: radial-gradient(circle at 50% 30%, #1a1720 0%, #0d0c10 100%);
+  overflow-x: hidden;
 }
 
 .mood-player-card {
   width: 100%;
-  max-width: 80%;
+  max-width: 760px;
+  margin: 0 auto;
   background-color: #131217;
   border: 1.5px solid rgba(240, 210, 205, 0.25);
   border-radius: 28px;
   padding: 2.25rem;
   box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7),
     0 0 0 1px rgba(255, 255, 255, 0.03);
+  box-sizing: border-box;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .app-container {
-    padding: 1rem;
+    padding: 1.25rem 0.85rem;
   }
 
   .mood-player-card {
-    padding: 1.5rem;
+    padding: 1.5rem 1.25rem;
     border-radius: 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-container {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .mood-player-card {
+    padding: 1.25rem 0.85rem;
+    border-radius: 18px;
   }
 }
