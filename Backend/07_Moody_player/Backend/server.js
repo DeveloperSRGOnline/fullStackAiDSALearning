@@ -1,6 +1,6 @@
 require('dotenv').config()
-import app from "./src/app"
-import connectToDB from "./src/db/db"
+const app = require("./src/app.js")
+const connectToDB = require("./src/db/db.js")
 connectToDB()
 
 
