@@ -100,16 +100,22 @@
 /* Controller Bar */
 .controller-bar {
     margin-top: 1.75rem;
-    padding: 1rem 1.4rem;
+    padding: 1.2rem 1.4rem;
     background: rgba(20, 19, 26, 0.85);
     border: 1px solid rgba(87, 149, 15, 0.35);
     border-radius: 16px;
     display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+}
+
+.controller-top {
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.25rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(10px);
 }
 
 .controller-info {
@@ -171,4 +177,93 @@
 .ctrl-btn.play-btn:hover:not(:disabled) {
     color: #72c515;
     transform: scale(1.1);
+}
+
+/* Timeline / Seek Bar */
+.timeline-container {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    width: 100%;
+}
+
+.time-display {
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.6);
+    min-width: 32px;
+    user-select: none;
+}
+
+.time-display:last-child {
+    text-align: right;
+}
+
+.timeline-slider-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.timeline-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    transition: height 0.15s ease;
+}
+
+.timeline-slider:hover:not(:disabled) {
+    height: 7px;
+}
+
+.timeline-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #57950f;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(87, 149, 15, 0.8);
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.timeline-slider:hover:not(:disabled)::-webkit-slider-thumb {
+    transform: scale(1.25);
+    background: #72c515;
+}
+
+.timeline-slider::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #57950f;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(87, 149, 15, 0.8);
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.timeline-slider:hover:not(:disabled)::-moz-range-thumb {
+    transform: scale(1.25);
+    background: #72c515;
+}
+
+.timeline-slider:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+
+.timeline-slider:disabled::-webkit-slider-thumb {
+    display: none;
+}
+
+.timeline-slider:disabled::-moz-range-thumb {
+    display: none;
 }
